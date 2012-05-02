@@ -67,6 +67,16 @@ def image_drapeau(nbr_pays):
     drapeau = pyglet.image.load("../data/texture/drapeaux/"+nom_image)
     return drapeau
 		
-	
+def chargement_4_drapeau(liste_4_nbrPays):
+    """! \brief Charge les 4 drapeaux.
+    \param[in] liste_4_nbr_pays -> Liste
+    \return liste_image_drapeau -> Liste
+    """
+    liste_image_drapeau = []
+    for i in liste_4_nbrPays :
+        ### charge le pays i :
+        image = image_drapeau(i)
+        liste_image_drapeau.append(image)
+    return liste_image_drapeau
 	
 

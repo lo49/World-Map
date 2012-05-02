@@ -17,11 +17,7 @@ import option
 
 def chargement_deco_menu():
     """! \brief Fonction du menu permettant de charger les image et de leur donnée des coordonné de base
-    \enum liste_drapeau : Liste contenant tuplets du style (image,x_image,y_image)
-    \enum image -> Sprite
-    \enum x_image -> entier
-    \enum y_image -> entier
-    \return liste_general -> Liste
+         \return liste_general -> Liste
     """
     largeur,hauteur = option.window()
     ## Tout d'abord on liste les drapeaux aléatoirement grâce a la fonction crer_liste_aleatorie_drapeau de drapeau
@@ -43,16 +39,15 @@ def chargement_deco_menu():
     return liste_general
         
         
-def affiche_menu_drapeau(pays_drapeau,yPlus) :
-    """!
-        \brief Permer l'affichage des drapeaux verticalement. 
+def affiche_menu_drapeau(liste_drapeau,yPlus) :
+    """! \brief Permer l'affichage des drapeaux verticalement. 
         Chaque image sera affiché au coordoné, enregistrer dans la liste pays_drapeau,
         x et y = y +yPlus        
         \param[in] pays_drapeau,yPlus -> Liste,entier 
-        \return None
+        \return liste_drapeau -> Liste
         """
-    for i in range(len(pays_drapeau)) :
-        total = pays_drapeau[i]
+    for i in range(len(liste_drapeau)) :
+        total = liste_drapeau[i]
         image = total[0]
         x = total[1]
         y = total[2]
@@ -62,8 +57,42 @@ def affiche_menu_drapeau(pays_drapeau,yPlus) :
         del total1[2]
         total1.append(y)
         truc = [total[0],x,y]
-        del pays_drapeau[i]
-        pays_drapeau.insert(i,truc)    
+        del liste_drapeau[i]
+        liste_drapeau.insert(i,truc)
+    ## on touche si besoin a la liste_drapeau :
+    liste_drapeau = boucle_de_drapeau(liste_drapeau)
+    return liste_drapeau
+
+def boucle_de_drapeau(liste_drapeau):
+    """! \brief Remet les drapeaux à la fin de la liste et au nouvelle coordonnée.
+    Elle permetra de créer un affichage infini des drapeaux dans le menu.
+    \param[in] liste_drapeau -> Liste
+    \return liste_drapeau -> Liste
+    """
+    ## On regarde le premier élement de la liste et on regarde si il est dans le
+    ## cadre de la fenetre
+    drapeau1 = liste_drapeau[0]
+    ## on prend le coordonnée y en position 3 de la liste drapeau1
+    y_drapeau1 = drapeau1[2]
+    largeur,hauteur = option.window()
+    ## si il n'est plus dans le cadre on le supprime et on le rajoute a la fin
+    ## avec un nouveau y le positionnant en y
+    if y_drapeau1 > hauteur :
+        del liste_drapeau[0]
+        ## On lit le dernier drapeau de la liste:
+        drapeau_fin = liste_drapeau[int(len(liste_drapeau) -1)]
+        y_drapeauFin = drapeau_fin[2]
+        y_drapeauNouveau = y_drapeauFin - 100
+        drapeauAjouter = []
+        drapeauAjouter.append(drapeau1[0])
+        drapeauAjouter.append(drapeau1[1])
+        drapeauAjouter.append(y_drapeauNouveau)
+        liste_drapeau.append(drapeauAjouter)
+    else : pass
+    return liste_drapeau
+
+
+        
 
 
     

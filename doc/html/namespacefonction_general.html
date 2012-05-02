@@ -90,6 +90,11 @@ Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefonction_general.html#a13ee29cb5fa7765d93fd715f51f53614">texture</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Cela permet de renvoyer la texture de l'image.  <a href="#a13ee29cb5fa7765d93fd715f51f53614"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefonction_general.html#a44683689af93e22f404ac2bd19749d5b">lectureDunFichier</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Lit un fichier et renvoie une liste.  <a href="#a44683689af93e22f404ac2bd19749d5b"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefonction_general.html#aa3da3acd0fa17db7d565b71f284269ce">modificationTexture</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Modifie la taille d'une image.  <a href="#aa3da3acd0fa17db7d565b71f284269ce"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefonction_general.html#a1cbecfa7b2288d2e77e55ad449bd5572">affiche_chargement_image</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Charge l'image et l'affiche au coordonnée x,y.  <a href="#a1cbecfa7b2288d2e77e55ad449bd5572"></a><br/></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>Permet la gestion des boutons. </p>
@@ -97,6 +102,49 @@ Functions</h2></td></tr>
 <dl class="version"><dt><b>Version:</b></dt><dd>2 </dd></dl>
 <dl class="date"><dt><b>Date:</b></dt><dd>27 avril 2012 </dd></dl>
 </div><hr/><h2>Function Documentation</h2>
+<a class="anchor" id="a1cbecfa7b2288d2e77e55ad449bd5572"></a><!-- doxytag: member="fonctionGeneral::affiche_chargement_image" ref="a1cbecfa7b2288d2e77e55ad449bd5572" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def <a class="el" href="namespacefonction_general.html#a1cbecfa7b2288d2e77e55ad449bd5572">fonctionGeneral.affiche_chargement_image</a> </td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>Nomsprite</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>y</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Charge l'image et l'affiche au coordonnée x,y. </p>
+<dl class="params"><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">Nomsprite,x,y</td><td>-&gt; string,entier,entier. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="fonction_general_8py_source.html#l00053">53</a> of file <a class="el" href="fonction_general_8py_source.html">fonctionGeneral.py</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="a44683689af93e22f404ac2bd19749d5b"></a><!-- doxytag: member="fonctionGeneral::lectureDunFichier" ref="a44683689af93e22f404ac2bd19749d5b" args="" -->
 <div class="memitem">
 <div class="memproto">
@@ -112,7 +160,60 @@ Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="fonction_general_8py_source.html#l00025">25</a> of file <a class="el" href="fonction_general_8py_source.html">fonctionGeneral.py</a>.</p>
+<p>Lit un fichier et renvoie une liste. </p>
+<dl class="params"><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">fichier,mode</td><td>-&gt; String,String </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>Liste_texte -&gt; Liste </dd></dl>
+
+<p>Definition at line <a class="el" href="fonction_general_8py_source.html#l00026">26</a> of file <a class="el" href="fonction_general_8py_source.html">fonctionGeneral.py</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aa3da3acd0fa17db7d565b71f284269ce"></a><!-- doxytag: member="fonctionGeneral::modificationTexture" ref="aa3da3acd0fa17db7d565b71f284269ce" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def <a class="el" href="namespacefonction_general.html#aa3da3acd0fa17db7d565b71f284269ce">fonctionGeneral.modificationTexture</a> </td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>image</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>largeurNouvelle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>hauteurNouvelle</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Modifie la taille d'une image. </p>
+<dl class="params"><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">image,largeurNouvelle,hauteurNouvelle</td><td>-&gt; Sprite,entier,entier </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>nouvelleImage -&gt; Sprite </dd></dl>
+
+<p>Definition at line <a class="el" href="fonction_general_8py_source.html#l00043">43</a> of file <a class="el" href="fonction_general_8py_source.html">fonctionGeneral.py</a>.</p>
 
 </div>
 </div>
@@ -163,7 +264,7 @@ Functions</h2></td></tr>
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Apr 28 2012 19:19:28 for World Map by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue May 1 2012 20:34:59 for World Map by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

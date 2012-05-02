@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>World Map: /home/lolo/Desktop/worldMap/src/deco.py Source File</title>
+<title>World Map: /home/lolo/Desktop/World-Map/src/deco.py Source File</title>
 
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
@@ -75,7 +75,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="header">
   <div class="headertitle">
-<div class="title">/home/lolo/Desktop/worldMap/src/deco.py</div>  </div>
+<div class="title">/home/lolo/Desktop/World-Map/src/deco.py</div>  </div>
 </div><!--header-->
 <div class="contents">
 <a href="deco_8py.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a><a class="code" href="namespacedeco.html">00001</a> <span class="comment">#-*- coding: utf-8 -*-</span>
@@ -95,58 +95,87 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00015"></a>00015 <span class="keyword">import</span> drapeau
 <a name="l00016"></a>00016 <span class="keyword">import</span> option
 <a name="l00017"></a>00017 
-<a name="l00018"></a>00018 <span class="keyword">def </span>chargement_deco_menu():
+<a name="l00018"></a><a class="code" href="namespacedeco.html#a51db284b7a19c4f86860816f5811205a">00018</a> <span class="keyword">def </span><a class="code" href="namespacedeco.html#a51db284b7a19c4f86860816f5811205a" title="Fonction du menu permettant de charger les image et de leur donnée des coordonné de base...">chargement_deco_menu</a>():
 <a name="l00019"></a>00019     <span class="stringliteral">&quot;&quot;&quot;! \brief Fonction du menu permettant de charger les image et de leur donnée des coordonné de base</span>
-<a name="l00020"></a>00020 <span class="stringliteral">    \enum liste_drapeau : Liste contenant tuplets du style (image,x_image,y_image)</span>
-<a name="l00021"></a>00021 <span class="stringliteral">    \enum image -&gt; Sprite</span>
-<a name="l00022"></a>00022 <span class="stringliteral">    \enum x_image -&gt; entier</span>
-<a name="l00023"></a>00023 <span class="stringliteral">    \enum y_image -&gt; entier</span>
-<a name="l00024"></a>00024 <span class="stringliteral">    \return liste_general -&gt; Liste</span>
-<a name="l00025"></a>00025 <span class="stringliteral">    &quot;&quot;&quot;</span>
-<a name="l00026"></a>00026     largeur,hauteur = option.window()
-<a name="l00027"></a>00027     <span class="comment">## Tout d&#39;abord on liste les drapeaux aléatoirement grâce a la fonction crer_liste_aleatorie_drapeau de drapeau</span>
-<a name="l00028"></a>00028     liste_drapeau = drapeau.creer_liste_aleatoire_drapeau(0,192)
-<a name="l00029"></a>00029     i= 0 <span class="comment">## Variable pour les coordonées</span>
-<a name="l00030"></a>00030     liste_general = []
-<a name="l00031"></a>00031     <span class="comment">## boucle pour charger les image et calculé les coordonnées</span>
-<a name="l00032"></a>00032     <span class="keywordflow">for</span> nbr_drapeau <span class="keywordflow">in</span> liste_drapeau:
-<a name="l00033"></a>00033         liste_pour_drapeau = []
-<a name="l00034"></a>00034         <span class="comment">## charge le drapeau :</span>
-<a name="l00035"></a>00035         image_drapeau = drapeau.image_drapeau(nbr_drapeau)
-<a name="l00036"></a>00036         x = 2 * largeur // 3
-<a name="l00037"></a>00037         y = i
-<a name="l00038"></a>00038         liste_pour_drapeau.append(image_drapeau)
-<a name="l00039"></a>00039         liste_pour_drapeau.append(x)
-<a name="l00040"></a>00040         liste_pour_drapeau.append(y)
-<a name="l00041"></a>00041         liste_general.append(liste_pour_drapeau)
-<a name="l00042"></a>00042         i = y - 100
-<a name="l00043"></a>00043     <span class="keywordflow">return</span> liste_general
-<a name="l00044"></a>00044         
-<a name="l00045"></a>00045         
-<a name="l00046"></a><a class="code" href="namespacedeco.html#ac24e49512d044387ed0d6ed7030c1ae6">00046</a> <span class="keyword">def </span><a class="code" href="namespacedeco.html#ac24e49512d044387ed0d6ed7030c1ae6" title="Permer l&#39;affichage des drapeaux verticalement.">affiche_menu_drapeau</a>(pays_drapeau,yPlus) :
-<a name="l00047"></a>00047     <span class="stringliteral">&quot;&quot;&quot;!</span>
-<a name="l00048"></a>00048 <span class="stringliteral">        \brief Permer l&#39;affichage des drapeaux verticalement. </span>
-<a name="l00049"></a>00049 <span class="stringliteral">        Chaque image sera affiché au coordoné, enregistrer dans la liste pays_drapeau,</span>
-<a name="l00050"></a>00050 <span class="stringliteral">        x et y = y +yPlus        </span>
-<a name="l00051"></a>00051 <span class="stringliteral">        \param[in] pays_drapeau,yPlus -&gt; Liste,entier </span>
-<a name="l00052"></a>00052 <span class="stringliteral">        \return None</span>
-<a name="l00053"></a>00053 <span class="stringliteral">        &quot;&quot;&quot;</span>
-<a name="l00054"></a>00054     <span class="keywordflow">for</span> i <span class="keywordflow">in</span> range(len(pays_drapeau)) :
-<a name="l00055"></a>00055         total = pays_drapeau[i]
-<a name="l00056"></a>00056         image = total[0]
-<a name="l00057"></a>00057         x = total[1]
-<a name="l00058"></a>00058         y = total[2]
-<a name="l00059"></a>00059         y = y + yPlus + 2
-<a name="l00060"></a>00060         image.blit(x,y)
-<a name="l00061"></a>00061         total1 = [image,x,y]
-<a name="l00062"></a>00062         del total1[2]
-<a name="l00063"></a>00063         total1.append(y)
-<a name="l00064"></a>00064         truc = [total[0],x,y]
-<a name="l00065"></a>00065         del pays_drapeau[i]
-<a name="l00066"></a>00066         pays_drapeau.insert(i,truc)    
-<a name="l00067"></a>00067 
-<a name="l00068"></a>00068 
-<a name="l00069"></a>00069     
+<a name="l00020"></a>00020 <span class="stringliteral">         \return liste_general -&gt; Liste</span>
+<a name="l00021"></a>00021 <span class="stringliteral">    &quot;&quot;&quot;</span>
+<a name="l00022"></a>00022     largeur,hauteur = option.window()
+<a name="l00023"></a>00023     <span class="comment">## Tout d&#39;abord on liste les drapeaux aléatoirement grâce a la fonction crer_liste_aleatorie_drapeau de drapeau</span>
+<a name="l00024"></a>00024     liste_drapeau = drapeau.creer_liste_aleatoire_drapeau(0,192)
+<a name="l00025"></a>00025     i= 0 <span class="comment">## Variable pour les coordonées</span>
+<a name="l00026"></a>00026     liste_general = []
+<a name="l00027"></a>00027     <span class="comment">## boucle pour charger les image et calculé les coordonnées</span>
+<a name="l00028"></a>00028     <span class="keywordflow">for</span> nbr_drapeau <span class="keywordflow">in</span> liste_drapeau:
+<a name="l00029"></a>00029         liste_pour_drapeau = []
+<a name="l00030"></a>00030         <span class="comment">## charge le drapeau :</span>
+<a name="l00031"></a>00031         image_drapeau = drapeau.image_drapeau(nbr_drapeau)
+<a name="l00032"></a>00032         x = 2 * largeur // 3
+<a name="l00033"></a>00033         y = i
+<a name="l00034"></a>00034         liste_pour_drapeau.append(image_drapeau)
+<a name="l00035"></a>00035         liste_pour_drapeau.append(x)
+<a name="l00036"></a>00036         liste_pour_drapeau.append(y)
+<a name="l00037"></a>00037         liste_general.append(liste_pour_drapeau)
+<a name="l00038"></a>00038         i = y - 100
+<a name="l00039"></a>00039     <span class="keywordflow">return</span> liste_general
+<a name="l00040"></a>00040         
+<a name="l00041"></a>00041         
+<a name="l00042"></a><a class="code" href="namespacedeco.html#ac24e49512d044387ed0d6ed7030c1ae6">00042</a> <span class="keyword">def </span><a class="code" href="namespacedeco.html#ac24e49512d044387ed0d6ed7030c1ae6" title="Permer l&#39;affichage des drapeaux verticalement.">affiche_menu_drapeau</a>(liste_drapeau,yPlus) :
+<a name="l00043"></a>00043     <span class="stringliteral">&quot;&quot;&quot;! \brief Permer l&#39;affichage des drapeaux verticalement. </span>
+<a name="l00044"></a>00044 <span class="stringliteral">        Chaque image sera affiché au coordoné, enregistrer dans la liste pays_drapeau,</span>
+<a name="l00045"></a>00045 <span class="stringliteral">        x et y = y +yPlus        </span>
+<a name="l00046"></a>00046 <span class="stringliteral">        \param[in] pays_drapeau,yPlus -&gt; Liste,entier </span>
+<a name="l00047"></a>00047 <span class="stringliteral">        \return liste_drapeau -&gt; Liste</span>
+<a name="l00048"></a>00048 <span class="stringliteral">        &quot;&quot;&quot;</span>
+<a name="l00049"></a>00049     <span class="keywordflow">for</span> i <span class="keywordflow">in</span> range(len(liste_drapeau)) :
+<a name="l00050"></a>00050         total = liste_drapeau[i]
+<a name="l00051"></a>00051         image = total[0]
+<a name="l00052"></a>00052         x = total[1]
+<a name="l00053"></a>00053         y = total[2]
+<a name="l00054"></a>00054         y = y + yPlus + 2
+<a name="l00055"></a>00055         image.blit(x,y)
+<a name="l00056"></a>00056         total1 = [image,x,y]
+<a name="l00057"></a>00057         del total1[2]
+<a name="l00058"></a>00058         total1.append(y)
+<a name="l00059"></a>00059         truc = [total[0],x,y]
+<a name="l00060"></a>00060         del liste_drapeau[i]
+<a name="l00061"></a>00061         liste_drapeau.insert(i,truc)
+<a name="l00062"></a>00062     <span class="comment">## on touche si besoin a la liste_drapeau :</span>
+<a name="l00063"></a>00063     liste_drapeau = <a class="code" href="namespacedeco.html#ae60b48ae7f7b62a916bca25216e482e0" title="Remet les drapeaux à la fin de la liste et au nouvelle coordonnée.">boucle_de_drapeau</a>(liste_drapeau)
+<a name="l00064"></a>00064     <span class="keywordflow">return</span> liste_drapeau
+<a name="l00065"></a>00065 
+<a name="l00066"></a><a class="code" href="namespacedeco.html#ae60b48ae7f7b62a916bca25216e482e0">00066</a> <span class="keyword">def </span><a class="code" href="namespacedeco.html#ae60b48ae7f7b62a916bca25216e482e0" title="Remet les drapeaux à la fin de la liste et au nouvelle coordonnée.">boucle_de_drapeau</a>(liste_drapeau):
+<a name="l00067"></a>00067     <span class="stringliteral">&quot;&quot;&quot;! \brief Remet les drapeaux à la fin de la liste et au nouvelle coordonnée.</span>
+<a name="l00068"></a>00068 <span class="stringliteral">    Elle permetra de créer un affichage infini des drapeaux dans le menu.</span>
+<a name="l00069"></a>00069 <span class="stringliteral">    \param[in] liste_drapeau -&gt; Liste</span>
+<a name="l00070"></a>00070 <span class="stringliteral">    \return liste_drapeau -&gt; Liste</span>
+<a name="l00071"></a>00071 <span class="stringliteral">    &quot;&quot;&quot;</span>
+<a name="l00072"></a>00072     <span class="comment">## On regarde le premier élement de la liste et on regarde si il est dans le</span>
+<a name="l00073"></a>00073     <span class="comment">## cadre de la fenetre</span>
+<a name="l00074"></a>00074     drapeau1 = liste_drapeau[0]
+<a name="l00075"></a>00075     <span class="comment">## on prend le coordonnée y en position 3 de la liste drapeau1</span>
+<a name="l00076"></a>00076     y_drapeau1 = drapeau1[2]
+<a name="l00077"></a>00077     largeur,hauteur = option.window()
+<a name="l00078"></a>00078     <span class="comment">## si il n&#39;est plus dans le cadre on le supprime et on le rajoute a la fin</span>
+<a name="l00079"></a>00079     <span class="comment">## avec un nouveau y le positionnant en y</span>
+<a name="l00080"></a>00080     <span class="keywordflow">if</span> y_drapeau1 &gt; hauteur :
+<a name="l00081"></a>00081         del liste_drapeau[0]
+<a name="l00082"></a>00082         <span class="comment">## On lit le dernier drapeau de la liste:</span>
+<a name="l00083"></a>00083         drapeau_fin = liste_drapeau[int(len(liste_drapeau) -1)]
+<a name="l00084"></a>00084         y_drapeauFin = drapeau_fin[2]
+<a name="l00085"></a>00085         y_drapeauNouveau = y_drapeauFin - 100
+<a name="l00086"></a>00086         drapeauAjouter = []
+<a name="l00087"></a>00087         drapeauAjouter.append(drapeau1[0])
+<a name="l00088"></a>00088         drapeauAjouter.append(drapeau1[1])
+<a name="l00089"></a>00089         drapeauAjouter.append(y_drapeauNouveau)
+<a name="l00090"></a>00090         liste_drapeau.append(drapeauAjouter)
+<a name="l00091"></a>00091     <span class="keywordflow">else</span> : <span class="keywordflow">pass</span>
+<a name="l00092"></a>00092     <span class="keywordflow">return</span> liste_drapeau
+<a name="l00093"></a>00093 
+<a name="l00094"></a>00094 
+<a name="l00095"></a>00095         
+<a name="l00096"></a>00096 
+<a name="l00097"></a>00097 
+<a name="l00098"></a>00098     
 </pre></div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -165,7 +194,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Apr 28 2012 19:19:28 for World Map by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue May 1 2012 20:34:59 for World Map by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

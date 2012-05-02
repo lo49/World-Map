@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>World Map: /home/lolo/Desktop/worldMap/src/main.py Source File</title>
+<title>World Map: /home/lolo/Desktop/World-Map/src/main.py Source File</title>
 
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
@@ -75,14 +75,14 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="header">
   <div class="headertitle">
-<div class="title">/home/lolo/Desktop/worldMap/src/main.py</div>  </div>
+<div class="title">/home/lolo/Desktop/World-Map/src/main.py</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="main_8py.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a><a class="code" href="namespacemain.html">00001</a> <span class="comment">#-*- coding: utf-8 -*-</span>
+<a href="main_8py.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">#-*- coding: utf-8 -*-</span>
 <a name="l00002"></a>00002 <span class="comment">#!/usr/bin/python</span>
 <a name="l00003"></a>00003 <span class="comment">#--------------------------------</span>
 <a name="l00004"></a>00004 <span class="comment">##  @package main</span>
-<a name="l00005"></a>00005 <span class="comment">##  \brief Gère tous</span>
+<a name="l00005"></a>00005 <span class="comment">##  \brief Gère tout</span>
 <a name="l00006"></a>00006 <span class="comment">##  \author Bouilly Loïc &amp; Kerhel Jélani</span>
 <a name="l00007"></a>00007 <span class="comment">##  \version 2</span>
 <a name="l00008"></a>00008 <span class="comment">##  \date 27 avril 2012</span>
@@ -92,18 +92,79 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00012"></a>00012 <span class="comment">#--------------------------------</span>
 <a name="l00013"></a>00013 <span class="comment"># Importation des modules</span>
 <a name="l00014"></a>00014 <span class="keyword">import</span> pyglet
-<a name="l00015"></a>00015 <span class="keyword">import</span> pays
-<a name="l00016"></a>00016 <span class="keyword">import</span> drapeau
-<a name="l00017"></a>00017 <span class="keyword">import</span> option
-<a name="l00018"></a>00018 <span class="keyword">import</span> controleJeu
-<a name="l00019"></a>00019 <span class="keyword">import</span> texte
-<a name="l00020"></a>00020 <span class="comment">#import fond</span>
-<a name="l00021"></a>00021 <span class="keyword">def </span>init():
-<a name="l00022"></a>00022     <span class="stringliteral">&quot;&quot;&quot;! \brief Initialisation</span>
-<a name="l00023"></a>00023 <span class="stringliteral">    \enum Liste_drapeau_niveau Liste contenant les drapeaux par niveaux.</span>
-<a name="l00024"></a>00024 <span class="stringliteral">    \return Liste_drapeau_niveau -&gt; Liste</span>
-<a name="l00025"></a>00025 <span class="stringliteral">    &quot;&quot;&quot;</span>
-<a name="l00026"></a>00026     
+<a name="l00015"></a>00015 <span class="keyword">from</span> pyglet.gl <span class="keyword">import</span> *
+<a name="l00016"></a>00016 <span class="keyword">import</span> pays
+<a name="l00017"></a>00017 <span class="keyword">import</span> drapeau
+<a name="l00018"></a>00018 <span class="keyword">import</span> option
+<a name="l00019"></a>00019 <span class="keyword">import</span> controleJeu
+<a name="l00020"></a>00020 <span class="keyword">import</span> texte
+<a name="l00021"></a>00021 <span class="keyword">import</span> deco
+<a name="l00022"></a>00022 <span class="keyword">import</span> fond
+<a name="l00023"></a>00023 <span class="keyword">import</span> menu
+<a name="l00024"></a>00024 <span class="keyword">import</span> bouton
+<a name="l00025"></a>00025 <span class="keyword">import</span> niveau
+<a name="l00026"></a>00026 <span class="keyword">import</span> jeu
+<a name="l00027"></a>00027 <span class="keyword">import</span> affichage
+<a name="l00028"></a>00028 
+<a name="l00029"></a>00029 <span class="keyword">def </span>init():
+<a name="l00030"></a>00030     <span class="stringliteral">&quot;&quot;&quot;! \brief Initialisation</span>
+<a name="l00031"></a>00031 <span class="stringliteral">    \enum Liste_drapeau_niveau -&gt; Liste contenant les drapeaux par niveaux.</span>
+<a name="l00032"></a>00032 <span class="stringliteral">    \return Liste_drapeau_niveau -&gt; Liste</span>
+<a name="l00033"></a>00033 <span class="stringliteral">    &quot;&quot;&quot;</span>
+<a name="l00034"></a>00034     largeur,hauteur = option.window()
+<a name="l00035"></a>00035     window = pyglet.window.Window(largeur,hauteur)
+<a name="l00036"></a>00036     liste_drapeau = deco.chargement_deco_menu()
+<a name="l00037"></a>00037     fondImage = fond.Fond()
+<a name="l00038"></a>00038     <span class="keywordflow">return</span> liste_drapeau,window,fondImage,Liste_niveau,liste_numero_pays_niveau
+<a name="l00039"></a>00039 
+<a name="l00040"></a>00040 liste_drapeau,window,fondImage = init()
+<a name="l00041"></a>00041 
+<a name="l00042"></a>00042 @window.event
+<a name="l00043"></a><a class="code" href="namespacemain.html#a2fc7976490160e65b2c634c092c9343b">00043</a> <span class="keyword">def </span><a class="code" href="namespacemain.html#a2fc7976490160e65b2c634c092c9343b">on_draw</a>():
+<a name="l00044"></a>00044     window.clear()
+<a name="l00045"></a>00045     fondImage.blit(0,0)
+<a name="l00046"></a>00046     <span class="comment">## On lit la page dans laquelle le joueur est pour l&#39;affiché :</span>
+<a name="l00047"></a>00047     page = controleJeu.lirePage()
+<a name="l00048"></a>00048     <span class="comment">## Bouton home :</span>
+<a name="l00049"></a>00049     <span class="keywordflow">if</span> page != <span class="stringliteral">&quot;menu&quot;</span> :
+<a name="l00050"></a>00050         bouton.bouton_home()
+<a name="l00051"></a>00051 
+<a name="l00052"></a>00052     <span class="keywordflow">if</span> page == <span class="stringliteral">&quot;menu&quot;</span> :
+<a name="l00053"></a>00053         deco.affiche_menu_drapeau(liste_drapeau,yPlus)
+<a name="l00054"></a>00054         menu.affiche_menu()
+<a name="l00055"></a>00055     <span class="keywordflow">elif</span> page == <span class="stringliteral">&quot;niveau&quot;</span>:
+<a name="l00056"></a>00056         niveau.affiche_niveau(Liste_niveau)
+<a name="l00057"></a>00057     <span class="keywordflow">elif</span> page == <span class="stringliteral">&quot;partie&quot;</span>:
+<a name="l00058"></a>00058         niveau_jeu = niveau.selectionListeDrapeau_niveau(liste_numero_pays_niveau)
+<a name="l00059"></a>00059         liste_4_nbrPays = jeu.chargement_4_nbrPays(6,niveau_jeu)
+<a name="l00060"></a>00060         <span class="comment">#les_drapeaux = drapeau.chargement_4_drapeau(liste_4_nbrPays)</span>
+<a name="l00061"></a>00061         affichage.affichage_drapeau_reponse(liste_4_nbrPays)
+<a name="l00062"></a>00062 @window.event
+<a name="l00063"></a><a class="code" href="namespacemain.html#aa784cf3032d784cd206d83db7c527700">00063</a> <span class="keyword">def </span><a class="code" href="namespacemain.html#aa784cf3032d784cd206d83db7c527700">on_mouse_press</a>(x,y,button,modifier):
+<a name="l00064"></a>00064     <span class="comment">## On lit la page dans laquelle le joueur se trouve</span>
+<a name="l00065"></a>00065     page = controleJeu.lirePage()
+<a name="l00066"></a>00066     <span class="keywordflow">if</span> page != <span class="stringliteral">&quot;menu&quot;</span> :
+<a name="l00067"></a>00067         bouton.gestionRetour(x,y)
+<a name="l00068"></a>00068     <span class="keywordflow">if</span> page == <span class="stringliteral">&quot;menu&quot;</span> :
+<a name="l00069"></a>00069         menu.mouse_menu_clic(x,y)
+<a name="l00070"></a>00070     <span class="keywordflow">elif</span> page == <span class="stringliteral">&quot;niveau&quot;</span>:
+<a name="l00071"></a>00071         niveau.niveau_clique(x,y)
+<a name="l00072"></a>00072 
+<a name="l00073"></a>00073 
+<a name="l00074"></a><a class="code" href="namespacemain.html#a28c55e4454f3a6f8a85550c5f5190c57">00074</a> <span class="keyword">def </span><a class="code" href="namespacemain.html#a28c55e4454f3a6f8a85550c5f5190c57">animer</a>(dt):
+<a name="l00075"></a>00075             <span class="comment"># On fait varier yPlus pour les mouvement des drapeaux</span>
+<a name="l00076"></a>00076             <span class="keyword">global</span> yPlus
+<a name="l00077"></a>00077             yPlus = dt + 0.5
+<a name="l00078"></a>00078 
+<a name="l00079"></a>00079 <span class="keywordflow">if</span> __name__ == <span class="stringliteral">&quot;__main__&quot;</span> :
+<a name="l00080"></a>00080                     glEnable(GL_BLEND)
+<a name="l00081"></a>00081                     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA)
+<a name="l00082"></a>00082                     <span class="comment"># Fonction mainloop</span>
+<a name="l00083"></a>00083                     pyglet.clock.schedule_interval(animer,0.00001)
+<a name="l00084"></a>00084                     pyglet.app.run()
+<a name="l00085"></a>00085     
+<a name="l00086"></a>00086 
+<a name="l00087"></a>00087 
 </pre></div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -122,7 +183,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Apr 28 2012 19:19:28 for World Map by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue May 1 2012 20:34:59 for World Map by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

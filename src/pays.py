@@ -214,15 +214,13 @@ def pays(x) :
     "au Tuvalu",
     "au Vanuatu",
     ]
-    
-    pays = u""+liste_pays[x]
-    return pays
-
+    pays2 = unicode(liste_pays[x],"utf-8")
+    #print pays2
+    #pays3 = u""+liste_pays[x]
+    return pays2
 ################################################################
 #               Liste des drapeaux par odres alphabetique      #
 ################################################################
-
-
 def liste_drapeaux(x):
     """! \brief """
     find_drapeaux =["afrique_du_sud.png",

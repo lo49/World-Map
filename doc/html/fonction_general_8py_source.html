@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>World Map: /home/lolo/Desktop/worldMap/src/fonctionGeneral.py Source File</title>
+<title>World Map: /home/lolo/Desktop/World-Map/src/fonctionGeneral.py Source File</title>
 
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
@@ -75,7 +75,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="header">
   <div class="headertitle">
-<div class="title">/home/lolo/Desktop/worldMap/src/fonctionGeneral.py</div>  </div>
+<div class="title">/home/lolo/Desktop/World-Map/src/fonctionGeneral.py</div>  </div>
 </div><!--header-->
 <div class="contents">
 <a href="fonction_general_8py.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a><a class="code" href="namespacefonction_general.html">00001</a> <span class="comment">#-*- coding: utf-8 -*-</span>
@@ -100,10 +100,42 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00020"></a>00020 <span class="stringliteral">    \return largeur,hauteur -&gt; entier,entier</span>
 <a name="l00021"></a>00021 <span class="stringliteral">    &quot;&quot;&quot;</span>
 <a name="l00022"></a>00022     largeur = sprite.width
-<a name="l00023"></a>00023     hauteur = sprite.hight
+<a name="l00023"></a>00023     hauteur = sprite.height
 <a name="l00024"></a>00024     <span class="keywordflow">return</span> largeur,hauteur
-<a name="l00025"></a><a class="code" href="namespacefonction_general.html#a44683689af93e22f404ac2bd19749d5b">00025</a> <span class="keyword">def </span><a class="code" href="namespacefonction_general.html#a44683689af93e22f404ac2bd19749d5b">lectureDunFichier</a>(fichier):
-<a name="l00026"></a>00026     <span class="stringliteral">&quot;&quot;&quot;! &quot;&quot;&quot;</span>
+<a name="l00025"></a>00025 
+<a name="l00026"></a><a class="code" href="namespacefonction_general.html#a44683689af93e22f404ac2bd19749d5b">00026</a> <span class="keyword">def </span><a class="code" href="namespacefonction_general.html#a44683689af93e22f404ac2bd19749d5b" title="Lit un fichier et renvoie une liste.">lectureDunFichier</a>(fichier):
+<a name="l00027"></a>00027     <span class="stringliteral">&quot;&quot;&quot;! \brief Lit un fichier et renvoie une liste.</span>
+<a name="l00028"></a>00028 <span class="stringliteral">    \param[in] fichier,mode -&gt; String,String</span>
+<a name="l00029"></a>00029 <span class="stringliteral">    \return Liste_texte -&gt; Liste</span>
+<a name="l00030"></a>00030 <span class="stringliteral">    &quot;&quot;&quot;</span>
+<a name="l00031"></a>00031     <span class="comment">##Ouverture du fichier</span>
+<a name="l00032"></a>00032     fichier = open(<span class="stringliteral">&quot;../data/texte/&quot;</span>+fichier,<span class="stringliteral">&quot;</span><span class="stringliteral">r&quot;)</span>
+<a name="l00033"></a>00033 <span class="stringliteral">    </span><span class="comment">## Liste que l&#39;on renvera</span>
+<a name="l00034"></a>00034     Liste_texte = []
+<a name="l00035"></a>00035     <span class="keywordflow">for</span> ligne <span class="keywordflow">in</span> fichier:
+<a name="l00036"></a>00036         ligne = ligne.split()
+<a name="l00037"></a>00037         <span class="keywordflow">if</span> ligne == []:
+<a name="l00038"></a>00038             <span class="keywordflow">pass</span>
+<a name="l00039"></a>00039         <span class="keywordflow">else</span>: Liste_texte.append(ligne)
+<a name="l00040"></a>00040     fichier.close()
+<a name="l00041"></a>00041     <span class="keywordflow">return</span> Liste_texte    
+<a name="l00042"></a>00042 
+<a name="l00043"></a><a class="code" href="namespacefonction_general.html#aa3da3acd0fa17db7d565b71f284269ce">00043</a> <span class="keyword">def </span><a class="code" href="namespacefonction_general.html#aa3da3acd0fa17db7d565b71f284269ce" title="Modifie la taille d&#39;une image.">modificationTexture</a>(image,largeurNouvelle,hauteurNouvelle):
+<a name="l00044"></a>00044     <span class="stringliteral">&quot;&quot;&quot;! \brief Modifie la taille d&#39;une image</span>
+<a name="l00045"></a>00045 <span class="stringliteral">    \param[in] image,largeurNouvelle,hauteurNouvelle -&gt; Sprite,entier,entier</span>
+<a name="l00046"></a>00046 <span class="stringliteral">    \return nouvelleImage -&gt; Sprite</span>
+<a name="l00047"></a>00047 <span class="stringliteral">    &quot;&quot;&quot;</span>
+<a name="l00048"></a>00048     nouvelleImage = image.get_texture()                                                                                                  
+<a name="l00049"></a>00049     nouvelleImage.width = int(largeurNouvelle)                                                                                                                                                                  
+<a name="l00050"></a>00050     nouvelleImage.height = int(hauteurNouvelle)
+<a name="l00051"></a>00051     <span class="keywordflow">return</span> nouvelleImage
+<a name="l00052"></a>00052 
+<a name="l00053"></a><a class="code" href="namespacefonction_general.html#a1cbecfa7b2288d2e77e55ad449bd5572">00053</a> <span class="keyword">def </span><a class="code" href="namespacefonction_general.html#a1cbecfa7b2288d2e77e55ad449bd5572" title="Charge l&#39;image et l&#39;affiche au coordonnée x,y.">affiche_chargement_image</a>(Nomsprite,x,y):
+<a name="l00054"></a>00054     <span class="stringliteral">&quot;&quot;&quot;! \brief Charge l&#39;image et l&#39;affiche au coordonnée x,y</span>
+<a name="l00055"></a>00055 <span class="stringliteral">    \param[in] Nomsprite,x,y -&gt; string,entier,entier.</span>
+<a name="l00056"></a>00056 <span class="stringliteral">    &quot;&quot;&quot;</span>
+<a name="l00057"></a>00057     image = pyglet.image.load(<span class="stringliteral">&quot;../data/texture/image/&quot;</span>+Nomsprite)
+<a name="l00058"></a>00058     image.blit(x,y)
 </pre></div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -122,7 +154,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Apr 28 2012 19:19:28 for World Map by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue May 1 2012 20:34:59 for World Map by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

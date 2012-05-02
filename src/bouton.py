@@ -12,14 +12,14 @@
 #--------------------------------
 # Importation des modules
 import pyglet
+import controleJeu
+import fonctionGeneral
 
 def afficher(sprite,x,y):
     """! \brief Cela permet d'afficher le bouton sur la fenêtre au coordonnée x,y
     \param[in] sprite,x,y -> sprite,entier,entier
-    \return None
     """
     sprite.blit(x,y)
-    return None
 
 
 def creer(nom):
@@ -30,5 +30,16 @@ def creer(nom):
     	"""
     	sprite = pyglet.image.load("../data/texture/bouton/"+nom)
 	return sprite
-	return
 
+def gestionRetour(x,y):
+    """! \brief Permet le retour vers le menu. """
+    if x < x_max and y<y_max :
+        controleJeu.modifierPage("menu")
+    else : pass
+
+def bouton_home():
+    bouton_home = creer("home.png")
+    global x_max,y_max
+    x_max,y_max = fonctionGeneral.texture(bouton_home)
+    afficher(bouton_home,0,0)
+    
