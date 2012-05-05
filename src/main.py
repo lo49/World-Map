@@ -35,9 +35,11 @@ def init():
     window = pyglet.window.Window(largeur,hauteur)
     liste_drapeau = deco.chargement_deco_menu()
     fondImage = fond.Fond()
-    return liste_drapeau,window,fondImage,Liste_niveau,liste_numero_pays_niveau
+    Liste_niveau =  niveau.structuration_niveau()
+    jeu.creation_qcm()
+    return liste_drapeau,window,fondImage,Liste_niveau
 
-liste_drapeau,window,fondImage = init()
+liste_drapeau,window,fondImage,Liste_niveau = init()
 
 @window.event
 def on_draw():
@@ -48,17 +50,13 @@ def on_draw():
     ## Bouton home :
     if page != "menu" :
         bouton.bouton_home()
-
     if page == "menu" :
         deco.affiche_menu_drapeau(liste_drapeau,yPlus)
         menu.affiche_menu()
     elif page == "niveau":
         niveau.affiche_niveau(Liste_niveau)
     elif page == "partie":
-        niveau_jeu = niveau.selectionListeDrapeau_niveau(liste_numero_pays_niveau)
-        liste_4_nbrPays = jeu.chargement_4_nbrPays(6,niveau_jeu)
-        #les_drapeaux = drapeau.chargement_4_drapeau(liste_4_nbrPays)
-        affichage.affichage_drapeau_reponse(liste_4_nbrPays)
+        jeu.affichage_jeu()
 @window.event
 def on_mouse_press(x,y,button,modifier):
     ## On lit la page dans laquelle le joueur se trouve

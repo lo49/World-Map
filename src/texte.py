@@ -37,12 +37,26 @@ def choix_size(nbr_size):
 	
 
 def creer(texte,x,y,couleur=5,size=5):
-	"""! \brief permet de créer un objet texte en pyglet.
-	\param[in] texte,couleur -> str,entier,entier
-	\return texte -> Text
-	"""
-	couleur = choix_couleur(couleur)
-	size = choix_size(size)
-	texte = unicode(texte,"utf-8")
-	texte = pyglet.text.Label(text=texte,x=x,y=y,color=couleur,font_size=size)
+        """! \brief permet de créer un objet texte en pyglet.
+        \param[in] texte,couleur -> str,entier,entier
+        \return texte -> Text
+        """
+        couleur = choix_couleur(couleur)
+        size = choix_size(size)
+        ### iso8859string
+        ##u’Nu\xc3\xb1oz’
+        ##>>> rawfromiso = iso8859string.encode(’iso-8859-1′)
+        ##>>> rawfromiso
+        ##‘Nu\xc3\xb1oz’
+        ##>>> properUTF8string = unicode(rawfromiso, ‘utf-8′)
+        ##>>> properUTF8string
+        ##u’Nu\xf1oz’
+        ##>>> print properUTF8string
+        ##Nuñoz
+        texte = u""+texte
+        texte_1 = texte.encode('iso-8859-1')
+        texte = unicode(texte_1,'utf-8')
+        print texte
+        texte = pyglet.text.Label(text=texte,x=x,y=y,color=couleur,font_size=size)
+
         return texte

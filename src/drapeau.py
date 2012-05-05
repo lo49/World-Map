@@ -75,7 +75,7 @@ def chargement_4_drapeau(liste_4_nbrPays):
     liste_image_drapeau = []
     for i in liste_4_nbrPays :
         ### charge le pays i :
-        image = image_drapeau(i)
+        image = image_drapeau(int(i))
         liste_image_drapeau.append(image)
     return liste_image_drapeau
 	

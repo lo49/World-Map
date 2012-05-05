@@ -12,7 +12,7 @@
 #--------------------------------
 
 ## Liste des pays par Nom leur numéros de la liste correspond au numéro de base
-def pays(x) :
+def pays_nom(x) :
     liste_pays = [#Afrique
     "à l'Afrique du Sud",
     "à l'Algérie",
