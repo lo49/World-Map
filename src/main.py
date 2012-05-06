@@ -16,6 +16,7 @@ from pyglet.gl import *
 import pays
 import drapeau
 import option
+import option_config
 import controleJeu
 import texte
 import deco
@@ -25,6 +26,7 @@ import bouton
 import niveau
 import jeu
 import affichage
+import niveau_fini
 
 
 def init():
@@ -59,6 +61,10 @@ def on_draw():
         niveau.affiche_niveau(Liste_niveau)
     elif page == "partie":
         jeu.affichage_jeu()
+    elif page == "option":
+        option_config.option_affichage()
+    elif page =="niveau_fini":
+        niveau_fini.affiche()
 @window.event
 def on_mouse_press(x,y,button,modifier):
     ## On lit la page dans laquelle le joueur se trouve
@@ -71,7 +77,10 @@ def on_mouse_press(x,y,button,modifier):
         niveau.niveau_clique(x,y)
     elif page == "partie":
         jeu.clique_reponse(x,y,button)
-
+    elif page == "option" :
+        option_config.option_clique(x,y,button)
+    elif page == "niveau_fini" :
+        pass
 
 def animer(dt):
             # On fait varier yPlus pour les mouvement des drapeaux
