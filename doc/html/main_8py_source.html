@@ -106,72 +106,73 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00026"></a>00026 <span class="keyword">import</span> jeu
 <a name="l00027"></a>00027 <span class="keyword">import</span> affichage
 <a name="l00028"></a>00028 
-<a name="l00029"></a>00029 <span class="keyword">def </span>init():
-<a name="l00030"></a>00030     <span class="stringliteral">&quot;&quot;&quot;! \brief Initialisation</span>
-<a name="l00031"></a>00031 <span class="stringliteral">    \enum Liste_drapeau_niveau -&gt; Liste contenant les drapeaux par niveaux.</span>
-<a name="l00032"></a>00032 <span class="stringliteral">    \return Liste_drapeau_niveau -&gt; Liste</span>
-<a name="l00033"></a>00033 <span class="stringliteral">    &quot;&quot;&quot;</span>
-<a name="l00034"></a>00034     largeur,hauteur = option.window()
-<a name="l00035"></a>00035     window = pyglet.window.Window(largeur,hauteur)
-<a name="l00036"></a>00036     liste_drapeau = deco.chargement_deco_menu()
-<a name="l00037"></a>00037     fondImage = fond.Fond()
-<a name="l00038"></a>00038     <span class="keywordflow">return</span> liste_drapeau,window,fondImage,Liste_niveau,liste_numero_pays_niveau
-<a name="l00039"></a>00039 
-<a name="l00040"></a>00040 liste_drapeau,window,fondImage = init()
-<a name="l00041"></a>00041 
-<a name="l00042"></a>00042 @window.event
-<a name="l00043"></a><a class="code" href="namespacemain.html#a2fc7976490160e65b2c634c092c9343b">00043</a> <span class="keyword">def </span><a class="code" href="namespacemain.html#a2fc7976490160e65b2c634c092c9343b">on_draw</a>():
-<a name="l00044"></a>00044     window.clear()
-<a name="l00045"></a>00045     fondImage.blit(0,0)
-<a name="l00046"></a>00046     <span class="comment">## On lit la page dans laquelle le joueur est pour l&#39;affiché :</span>
-<a name="l00047"></a>00047     page = controleJeu.lirePage()
-<a name="l00048"></a>00048     <span class="comment">## Bouton home :</span>
-<a name="l00049"></a>00049     <span class="keywordflow">if</span> page != <span class="stringliteral">&quot;menu&quot;</span> :
-<a name="l00050"></a>00050         bouton.bouton_home()
-<a name="l00051"></a>00051 
-<a name="l00052"></a>00052     <span class="keywordflow">if</span> page == <span class="stringliteral">&quot;menu&quot;</span> :
-<a name="l00053"></a>00053         deco.affiche_menu_drapeau(liste_drapeau,yPlus)
-<a name="l00054"></a>00054         menu.affiche_menu()
-<a name="l00055"></a>00055     <span class="keywordflow">elif</span> page == <span class="stringliteral">&quot;niveau&quot;</span>:
-<a name="l00056"></a>00056         niveau.affiche_niveau(Liste_niveau)
-<a name="l00057"></a>00057     <span class="keywordflow">elif</span> page == <span class="stringliteral">&quot;partie&quot;</span>:
-<a name="l00058"></a>00058         niveau_jeu = niveau.selectionListeDrapeau_niveau(liste_numero_pays_niveau)
-<a name="l00059"></a>00059         liste_4_nbrPays = jeu.chargement_4_nbrPays(6,niveau_jeu)
-<a name="l00060"></a>00060         <span class="comment">#les_drapeaux = drapeau.chargement_4_drapeau(liste_4_nbrPays)</span>
-<a name="l00061"></a>00061         affichage.affichage_drapeau_reponse(liste_4_nbrPays)
-<a name="l00062"></a>00062 @window.event
-<a name="l00063"></a><a class="code" href="namespacemain.html#aa784cf3032d784cd206d83db7c527700">00063</a> <span class="keyword">def </span><a class="code" href="namespacemain.html#aa784cf3032d784cd206d83db7c527700">on_mouse_press</a>(x,y,button,modifier):
-<a name="l00064"></a>00064     <span class="comment">## On lit la page dans laquelle le joueur se trouve</span>
-<a name="l00065"></a>00065     page = controleJeu.lirePage()
-<a name="l00066"></a>00066     <span class="keywordflow">if</span> page != <span class="stringliteral">&quot;menu&quot;</span> :
-<a name="l00067"></a>00067         bouton.gestionRetour(x,y)
-<a name="l00068"></a>00068     <span class="keywordflow">if</span> page == <span class="stringliteral">&quot;menu&quot;</span> :
-<a name="l00069"></a>00069         menu.mouse_menu_clic(x,y)
-<a name="l00070"></a>00070     <span class="keywordflow">elif</span> page == <span class="stringliteral">&quot;niveau&quot;</span>:
-<a name="l00071"></a>00071         niveau.niveau_clique(x,y)
-<a name="l00072"></a>00072 
+<a name="l00029"></a>00029 
+<a name="l00030"></a>00030 <span class="keyword">def </span>init():
+<a name="l00031"></a>00031     <span class="stringliteral">&quot;&quot;&quot;! \brief Initialisation</span>
+<a name="l00032"></a>00032 <span class="stringliteral">    \enum Liste_drapeau_niveau -&gt; Liste contenant les drapeaux par niveaux.</span>
+<a name="l00033"></a>00033 <span class="stringliteral">    \return Liste_drapeau_niveau -&gt; Liste</span>
+<a name="l00034"></a>00034 <span class="stringliteral">    &quot;&quot;&quot;</span>
+<a name="l00035"></a>00035     largeur,hauteur = option.window()
+<a name="l00036"></a>00036     window = pyglet.window.Window(largeur,hauteur)
+<a name="l00037"></a>00037     liste_drapeau = deco.chargement_deco_menu()
+<a name="l00038"></a>00038     fondImage = fond.Fond()
+<a name="l00039"></a>00039     Liste_niveau =  niveau.structuration_niveau()
+<a name="l00040"></a>00040     jeu.creation_qcm()
+<a name="l00041"></a>00041     <span class="keywordflow">return</span> liste_drapeau,window,fondImage,Liste_niveau
+<a name="l00042"></a>00042 
+<a name="l00043"></a>00043 liste_drapeau,window,fondImage,Liste_niveau = init()
+<a name="l00044"></a>00044 
+<a name="l00045"></a>00045 @window.event
+<a name="l00046"></a><a class="code" href="namespacemain.html#a2fc7976490160e65b2c634c092c9343b">00046</a> <span class="keyword">def </span><a class="code" href="namespacemain.html#a2fc7976490160e65b2c634c092c9343b">on_draw</a>():
+<a name="l00047"></a>00047     window.clear()
+<a name="l00048"></a>00048     fondImage.blit(0,0)
+<a name="l00049"></a>00049     <span class="comment">## On lit la page dans laquelle le joueur est pour l&#39;affiché :</span>
+<a name="l00050"></a>00050     page = controleJeu.lirePage()
+<a name="l00051"></a>00051     <span class="comment">## Bouton home :</span>
+<a name="l00052"></a>00052     <span class="keywordflow">if</span> page != <span class="stringliteral">&quot;menu&quot;</span> :
+<a name="l00053"></a>00053         bouton.bouton_home()
+<a name="l00054"></a>00054     <span class="keywordflow">if</span> page == <span class="stringliteral">&quot;menu&quot;</span> :
+<a name="l00055"></a>00055         deco.affiche_menu_drapeau(liste_drapeau,yPlus)
+<a name="l00056"></a>00056         menu.affiche_menu()
+<a name="l00057"></a>00057     <span class="keywordflow">elif</span> page == <span class="stringliteral">&quot;niveau&quot;</span>:
+<a name="l00058"></a>00058         niveau.affiche_niveau(Liste_niveau)
+<a name="l00059"></a>00059     <span class="keywordflow">elif</span> page == <span class="stringliteral">&quot;partie&quot;</span>:
+<a name="l00060"></a>00060         jeu.affichage_jeu()
+<a name="l00061"></a>00061 @window.event
+<a name="l00062"></a><a class="code" href="namespacemain.html#aa784cf3032d784cd206d83db7c527700">00062</a> <span class="keyword">def </span><a class="code" href="namespacemain.html#aa784cf3032d784cd206d83db7c527700">on_mouse_press</a>(x,y,button,modifier):
+<a name="l00063"></a>00063     <span class="comment">## On lit la page dans laquelle le joueur se trouve</span>
+<a name="l00064"></a>00064     page = controleJeu.lirePage()
+<a name="l00065"></a>00065     <span class="keywordflow">if</span> page != <span class="stringliteral">&quot;menu&quot;</span> :
+<a name="l00066"></a>00066         bouton.gestionRetour(x,y)
+<a name="l00067"></a>00067     <span class="keywordflow">if</span> page == <span class="stringliteral">&quot;menu&quot;</span> :
+<a name="l00068"></a>00068         menu.mouse_menu_clic(x,y)
+<a name="l00069"></a>00069     <span class="keywordflow">elif</span> page == <span class="stringliteral">&quot;niveau&quot;</span>:
+<a name="l00070"></a>00070         niveau.niveau_clique(x,y)
+<a name="l00071"></a>00071     <span class="keywordflow">elif</span> page == <span class="stringliteral">&quot;partie&quot;</span>:
+<a name="l00072"></a>00072         jeu.clique_reponse(x,y,button)
 <a name="l00073"></a>00073 
-<a name="l00074"></a><a class="code" href="namespacemain.html#a28c55e4454f3a6f8a85550c5f5190c57">00074</a> <span class="keyword">def </span><a class="code" href="namespacemain.html#a28c55e4454f3a6f8a85550c5f5190c57">animer</a>(dt):
-<a name="l00075"></a>00075             <span class="comment"># On fait varier yPlus pour les mouvement des drapeaux</span>
-<a name="l00076"></a>00076             <span class="keyword">global</span> yPlus
-<a name="l00077"></a>00077             yPlus = dt + 0.5
-<a name="l00078"></a>00078 
-<a name="l00079"></a>00079 <span class="keywordflow">if</span> __name__ == <span class="stringliteral">&quot;__main__&quot;</span> :
-<a name="l00080"></a>00080                     glEnable(GL_BLEND)
-<a name="l00081"></a>00081                     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA)
-<a name="l00082"></a>00082                     <span class="comment"># Fonction mainloop</span>
-<a name="l00083"></a>00083                     pyglet.clock.schedule_interval(animer,0.00001)
-<a name="l00084"></a>00084                     pyglet.app.run()
-<a name="l00085"></a>00085     
-<a name="l00086"></a>00086 
+<a name="l00074"></a>00074 
+<a name="l00075"></a><a class="code" href="namespacemain.html#a28c55e4454f3a6f8a85550c5f5190c57">00075</a> <span class="keyword">def </span><a class="code" href="namespacemain.html#a28c55e4454f3a6f8a85550c5f5190c57">animer</a>(dt):
+<a name="l00076"></a>00076             <span class="comment"># On fait varier yPlus pour les mouvement des drapeaux</span>
+<a name="l00077"></a>00077             <span class="keyword">global</span> yPlus
+<a name="l00078"></a>00078             yPlus = dt + 0.5
+<a name="l00079"></a>00079 
+<a name="l00080"></a>00080 <span class="keywordflow">if</span> __name__ == <span class="stringliteral">&quot;__main__&quot;</span> :
+<a name="l00081"></a>00081                     glEnable(GL_BLEND)
+<a name="l00082"></a>00082                     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA)
+<a name="l00083"></a>00083                     <span class="comment"># Fonction mainloop</span>
+<a name="l00084"></a>00084                     pyglet.clock.schedule_interval(animer,0.00001)
+<a name="l00085"></a>00085                     pyglet.app.run()
+<a name="l00086"></a>00086     
 <a name="l00087"></a>00087 
+<a name="l00088"></a>00088 
 </pre></div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -183,7 +184,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue May 1 2012 20:34:59 for World Map by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun May 6 2012 14:00:11 for World Map by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

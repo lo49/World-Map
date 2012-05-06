@@ -26,6 +26,7 @@ import niveau
 import jeu
 import affichage
 
+
 def init():
     """! \brief Initialisation
     \enum Liste_drapeau_niveau -> Liste contenant les drapeaux par niveaux.
@@ -37,6 +38,7 @@ def init():
     fondImage = fond.Fond()
     Liste_niveau =  niveau.structuration_niveau()
     jeu.creation_qcm()
+    controleJeu.modifierPage("menu")
     return liste_drapeau,window,fondImage,Liste_niveau
 
 liste_drapeau,window,fondImage,Liste_niveau = init()
@@ -67,12 +69,14 @@ def on_mouse_press(x,y,button,modifier):
         menu.mouse_menu_clic(x,y)
     elif page == "niveau":
         niveau.niveau_clique(x,y)
+    elif page == "partie":
+        jeu.clique_reponse(x,y,button)
 
 
 def animer(dt):
             # On fait varier yPlus pour les mouvement des drapeaux
             global yPlus
-            yPlus = dt + 0.5
+            yPlus = dt + 0.02
 
 if __name__ == "__main__" :
                     glEnable(GL_BLEND)

@@ -152,22 +152,21 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00072"></a>00072 <span class="stringliteral">    \param[in] liste_4_nbr_pays -&gt; Liste</span>
 <a name="l00073"></a>00073 <span class="stringliteral">    \return liste_image_drapeau -&gt; Liste</span>
 <a name="l00074"></a>00074 <span class="stringliteral">    &quot;&quot;&quot;</span>
-<a name="l00075"></a>00075     <span class="keywordflow">print</span> liste_4_nbrPays
-<a name="l00076"></a>00076     liste_image_drapeau = []
-<a name="l00077"></a>00077     <span class="keywordflow">for</span> i <span class="keywordflow">in</span> liste_4_nbrPays :
-<a name="l00078"></a>00078         <span class="comment">### charge le pays i :</span>
-<a name="l00079"></a>00079         image = <a class="code" href="namespacedrapeau.html#a443f43cdcc2e13d2f96c0407f59a0976" title="Permet d&#39;aller rechercher l&#39;image du drapeaux.">image_drapeau</a>(i)
-<a name="l00080"></a>00080         liste_image_drapeau.append(image)
-<a name="l00081"></a>00081     <span class="keywordflow">return</span> liste_image_drapeau
-<a name="l00082"></a>00082         
-<a name="l00083"></a>00083 
+<a name="l00075"></a>00075     liste_image_drapeau = []
+<a name="l00076"></a>00076     <span class="keywordflow">for</span> i <span class="keywordflow">in</span> liste_4_nbrPays :
+<a name="l00077"></a>00077         <span class="comment">### charge le pays i :</span>
+<a name="l00078"></a>00078         image = <a class="code" href="namespacedrapeau.html#a443f43cdcc2e13d2f96c0407f59a0976" title="Permet d&#39;aller rechercher l&#39;image du drapeaux.">image_drapeau</a>(int(i))
+<a name="l00079"></a>00079         liste_image_drapeau.append(image)
+<a name="l00080"></a>00080     <span class="keywordflow">return</span> liste_image_drapeau
+<a name="l00081"></a>00081         
+<a name="l00082"></a>00082 
 </pre></div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -179,7 +178,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue May 1 2012 20:34:59 for World Map by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun May 6 2012 14:00:10 for World Map by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

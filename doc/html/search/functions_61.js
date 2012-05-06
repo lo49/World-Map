@@ -1,6 +1,8 @@
 var searchData=
 [
   ['affichage_5fdrapeau_5freponse',['affichage_drapeau_reponse',['../namespaceaffichage.html#a12c7400a6b1f63b39703ed12e69deee6',1,'affichage']]],
+  ['affichage_5ffleche',['affichage_fleche',['../namespacejeu.html#afe57587d4d72bac8463fcfb4b609eaf2',1,'jeu']]],
+  ['affichage_5fjeu',['affichage_jeu',['../namespacejeu.html#a76339d86e0f06219810ef8d306a53905',1,'jeu']]],
   ['affiche',['affiche',['../namespacetexte.html#a984578da91402e42f284c27d8f1be4ed',1,'texte']]],
   ['affiche_5fchargement_5fimage',['affiche_chargement_image',['../namespacefonction_general.html#a1cbecfa7b2288d2e77e55ad449bd5572',1,'fonctionGeneral']]],
   ['affiche_5fmenu',['affiche_menu',['../namespacemenu.html#a5fc830af32cf846a3645512e82cb36ce',1,'menu']]],
