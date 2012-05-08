@@ -81,7 +81,11 @@ def on_mouse_press(x,y,button,modifier):
         option_config.option_clique(x,y,button)
     elif page == "niveau_fini" :
         pass
-
+@window.event
+def on_key_press(key,moddifier):
+    page = controleJeu.lirePage()
+    if page == "niveau_fini":
+        niveau_fini.clavier_pseudo(key)
 def animer(dt):
             # On fait varier yPlus pour les mouvement des drapeaux
             global yPlus
