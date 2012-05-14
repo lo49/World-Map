@@ -13,7 +13,7 @@
 # Importation des modules
 import pyglet
 from pyglet.gl import *
-import pays
+import pays,tHelp
 import drapeau
 import option
 import option_config
@@ -36,15 +36,28 @@ def init():
     """
     largeur,hauteur = option.window()
     window = pyglet.window.Window(largeur,hauteur)
+    #window = pyglet.window.Window()
+    icon1 = pyglet.image.load('../data/texture/image/16x16.png')
+    icon2 = pyglet.image.load('../data/texture/image/32x32.png')
+    window.set_icon(icon1, icon2)
     liste_drapeau = deco.chargement_deco_menu()
     fondImage = fond.Fond()
     Liste_niveau =  niveau.structuration_niveau()
     jeu.creation_qcm()
     controleJeu.modifierPage("menu")
+    global drapeau_help
+    drapeau_help = tHelp.Help()
+    global player
+    player = pyglet.media.Player()
+    #music1 = pyglet.media.load("../data/son/music_01.mp3")
+    #player.queue(music1)
+    Largeur_fenetre,Longueur_fenetre,ON_OFF_musique,ON_OFF_son = option_config.lecture_option()
+    if ON_OFF_musique == True :
+        player.play()
     return liste_drapeau,window,fondImage,Liste_niveau
 
 liste_drapeau,window,fondImage,Liste_niveau = init()
-
+    
 @window.event
 def on_draw():
     window.clear()
@@ -65,6 +78,9 @@ def on_draw():
         option_config.option_affichage()
     elif page =="niveau_fini":
         niveau_fini.affiche()
+    elif page == "help" :
+        drapeau_help.affiche_drapeau()        
+        
 @window.event
 def on_mouse_press(x,y,button,modifier):
     ## On lit la page dans laquelle le joueur se trouve
@@ -78,9 +94,16 @@ def on_mouse_press(x,y,button,modifier):
     elif page == "partie":
         jeu.clique_reponse(x,y,button)
     elif page == "option" :
-        option_config.option_clique(x,y,button)
+        option_config.option_clique(x,y,button,player)
     elif page == "niveau_fini" :
         pass
+@window.event
+def on_mouse_motion(x,y,dx,dy):
+    page = controleJeu.lirePage()
+    if page == "help":
+        drapeau_help.vitesse_modifie(x,y)
+    elif page == "menu":
+        menu.mouse_motion(x,y)
 @window.event
 def on_key_press(key,moddifier):
     page = controleJeu.lirePage()
@@ -91,8 +114,11 @@ def animer(dt):
             global yPlus
             yPlus = dt + 0.02
 
+
 if __name__ == "__main__" :
+                    pyglet.clock.get_fps()
                     glEnable(GL_BLEND)
+                    #glEnable(GL_DEPTH_TEST)
                     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA)
                     # Fonction mainloop
                     pyglet.clock.schedule_interval(animer,0.00001)
